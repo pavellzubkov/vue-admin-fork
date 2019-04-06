@@ -5,6 +5,10 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
+import vueNcform from '@ncform/ncform'
+import ncformStdComps from '@ncform/ncform-theme-elementui'
+import MyCustomComp from '@/components/MyCustomComp'
+import MyCustomRule from '@/rules/MyCustomRule'
 
 import '@/styles/index.scss' // global css
 
@@ -26,6 +30,11 @@ import '@/permission' // permission control
 import '../mock' // simulation data
 
 Vue.use(ElementUI, { locale })
+Vue.use(vueNcform, {
+  extComponents: Object.assign(ncformStdComps, { MyCustomComp }),
+  extRules: [{ myCustom: MyCustomRule }],
+  lang: '' // you can try 'en' or 'zh-cn'
+})
 
 Vue.config.productionTip = false
 
